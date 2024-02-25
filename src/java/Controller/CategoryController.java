@@ -79,8 +79,8 @@ public class CategoryController extends HttpServlet {
             }
 
             request.setAttribute("listProduct", list);
-            request.setAttribute("listCategory", listCategory);
-            request.setAttribute("activePage", "shop");
+            request.setAttribute("listCategory" );
+            request.setAttribute("activePage" );
 
             //Đẩy thằng categoryname lên jsp
             request.setAttribute("categoryname", categoryname);

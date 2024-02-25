@@ -63,53 +63,53 @@ public class ShopController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {       
-            
+        try ( PrintWriter out = response.getWriter()) {
+
             String indexPage = request.getParameter("page");
-            
+            String categoryid = request.getParameter("categoryID");
             if (indexPage == null) {
                 indexPage = "1";
             }
 
-            int page = Integer.parseInt(indexPage);  
-            
+            int page = Integer.parseInt(indexPage);
+
             DAO dao = new DAO();
             int count = dao.getTotalProduct();
             int endPage = count / 9;
             if (endPage % 9 != 0) {
                 endPage++;
             }
-            
+
             ArrayList<Product> list = dao.pagingProduct(page);
-            ArrayList<Category> listCategory = dao.getAllCategory();    
-            
+            ArrayList<Category> listCategory = dao.getAllCategory();
+
             //Cookie lưu giỏ hàng 
             Cookie[] arr = request.getCookies();
-            String txt="";
-            if(arr!=null){
-                for(Cookie o: arr){
-                    if(o.getName().equals("cart")){
-                        txt+=o.getValue();
+            String txt = "";
+            if (arr != null) {
+                for (Cookie o : arr) {
+                    if (o.getName().equals("cart")) {
+                        txt += o.getValue();
                     }
                 }
             }
             ArrayList<Product> listCart = dao.getAllProduct();
-            Cart cart= new Cart(txt, listCart);
+            Cart cart = new Cart(txt, listCart);
             ArrayList<Item> listItem = cart.getItems();
-            int n=0;
-            if(listItem!=null){
+            int n = 0;
+            if (listItem != null) {
                 n = listItem.size();
             }
-            request.setAttribute("size", n);           
-            
+            request.setAttribute("size", n);
+
             request.setAttribute("listProduct", list);
             request.setAttribute("listCategory", listCategory);
             request.setAttribute("endPage", endPage);
             request.setAttribute("activePage", "shop");
             request.setAttribute("categoryname", "Tất cả sản phẩm");
-            
+
             request.getRequestDispatcher("shop.jsp").forward(request, response);
-            
+
         }
     }
 
@@ -125,7 +125,7 @@ public class ShopController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**
