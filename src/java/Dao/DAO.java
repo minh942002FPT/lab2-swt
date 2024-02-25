@@ -254,7 +254,7 @@ public class DAO extends DBContext {
         return list;
     }
 
-    public int getTotalProduct() {
+    public void getTotalProduct() {
         try {
             String strSQL = "select count(*) from Product ";
             cnn = connection;

@@ -64,7 +64,7 @@ public class CartController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             DAO dao = new DAO();
-            
+            int count = 0;
             Cookie[] arr = request.getCookies();
             String txt="";
             if(arr!=null){

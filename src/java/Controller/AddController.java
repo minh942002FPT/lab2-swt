@@ -102,7 +102,7 @@ public class AddController extends HttpServlet {
             String formattedDate = outputFormat.format(date);
 
             DAO dao = new DAO();
-            dao.addProduct(productname, productimage, productprice, title, sizeid, colorid, description, instock, formattedDate, categoryid);
+            dao.addProduct(productname, productimage, productprice, title, sizeid, colorid, description, instock, formattedDate);
 
             response.sendRedirect("managecontroller");
         } catch (ParseException ex) {
