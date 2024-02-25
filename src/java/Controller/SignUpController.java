@@ -92,7 +92,7 @@ public class SignUpController extends HttpServlet {
                 Account a = dao.checkUser(username);
                 if (a == null) {
                     dao.signUp(username, password);
-                    Account newUser = dao.checkUser(username);
+                    Account newUser = dao.checkUser();
                     HttpSession session = request.getSession();
                     session.setAttribute("acc", newUser);
                     response.sendRedirect("homecontroller");

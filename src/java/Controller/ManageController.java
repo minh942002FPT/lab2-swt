@@ -71,11 +71,14 @@ public class ManageController extends HttpServlet {
             int page = Integer.parseInt(indexPage);  
             
             DAO dao = new DAO();
+            
+           
             int count = dao.getTotalProduct();
             int endPage = count / 9;
             if (endPage % 9 != 0) {
                 endPage++;
             }
+            
             
             ArrayList<Product> list = dao.pagingManageProduct(page);
             ArrayList<Category> listCategory = dao.getAllCategory();   
