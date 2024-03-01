@@ -80,7 +80,7 @@ public class CategoryController extends HttpServlet {
 
             request.setAttribute("listProduct", list);
             request.setAttribute("listCategory" );
-            request.setAttribute("activePage" );
+            request.setAttribute("activePage","shop" );
 
             //Đẩy thằng categoryname lên jsp
             request.setAttribute("categoryname", categoryname);
